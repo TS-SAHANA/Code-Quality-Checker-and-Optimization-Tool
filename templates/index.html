@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Quality Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo"><i class="fas fa-code"></i> CodeZee</a>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <h1 style="color: white;"><i style="color: white;" class="fas fa-code"></i> Code Quality Checker</h1>
+        <p>Boost the performance and quality of your code with our powerful optimization and analysis tools.</p>
+        <a href="#form-section" class="cta-button" id="start-button">Start Now</a>
+      </div>
+  </section>
+  
+
+  <!-- Tool Container -->
+<div class="container" id="tool-container" style="display: none;">
+  <h1 style="color: white;"><i style="color: white;" class="fas fa-code"></i> Code Quality Checker</h1>
+
+  <!-- Form Section -->
+  <form id="code-quality-form" enctype="multipart/form-data">
+    <!-- Feature Selection Tile Toggle -->
+    <div class="tile-toggle-wrapper">
+      <div class="tile-toggle">
+        <div class="selected-indicator"></div>
+        <div class="toggle-option" id="optimize-option">Code Optimization</div>
+        <div class="toggle-option" id="analyze-option">Code Quality Analysis</div>
+      </div>
+    </div>
+
+    <!-- Custom Upload UI -->
+    <label for="file-upload" class="custom-upload" id="custom-upload-label">
+      <i class="fas fa-upload"></i> Choose Your File<br> <span id="file-support" style="color:rgb(110, 113, 113); padding-top: 10px; display: block;"> This tool supports .py and .js files </span>
+    </label>
+    <input type="file" name="file" id="file-upload" accept=".py,.js" required style="display: none;">
+    <!--<h4 style="color: white; margin-top: 0;">Select a .py or .js file</h4>-->
+    <span id="file-name" style="margin-top: 10px; display: block; color: #555;"></span>
+
+    <!-- Submit Button -->
+    <button type="submit"><i class="fas fa-check-circle"></i> Start Process</button>
+  </form>
+
+  <!-- Loading Spinner -->
+  <div id="loading-spinner"></div>
+
+  <!-- Results Section -->
+  <div id="results-container">
+    <div id="optimization-section" style="display: none;">
+      <h2><i class="fas fa-magic"></i> Optimized Code:</h2>
+      <pre id="optimized-code"></pre>
+      <button id="download-button"><i class="fas fa-download"></i> Download</button>
+      <!-- Performance Metrics Section -->
+      <div id="performance-metrics" class="performance-metrics" style="display: none;">
+        <h3><i class="fas fa-tachometer-alt"></i> Performance Metrics</h3>
+        <p><strong>Execution Time:</strong> <span id="execution-time">--</span> seconds</p>
+        <p><strong>Memory Usage:</strong> <span id="memory-usage">--</span> KB</p>
+      </div>
+    </div>
+
+    <div id="analysis-section" style="display: none;">
+      <h2><i class="fas fa-chart-bar"></i> Code Quality Analysis:</h2>
+      <div id="analysis-results" style="text-align: left;">
+        <!-- JS will inject detailed quality results here -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works-section">
+    <h2>How It Works</h2>
+    <div class="steps-wrapper">
+      <div class="step">
+          <div class="step-icon">1</div>
+          <h3>Select Your File</h3>
+          <p>Choose a Python or JavaScript file to upload.</p>
+      </div>
+      <div class="step">
+          <div class="step-icon">2</div>
+          <h3>Choose Your Feature</h3>
+          <p>Select either code optimization or quality analysis.</p>
+      </div>
+      <div class="step">
+          <div class="step-icon">3</div>
+          <h3>Get Results</h3>
+          <p>Our tool will process your code and give you detailed feedback.</p>
+      </div>
+    </div>
+  </section>  
+
+  <!-- Key Features Section -->
+  <section id="features" class="features-section">
+    <div class="section-inner">
+      <h2>Key Features</h2>
+      <div class="features-inner">
+        <div class="feature">
+          <i class="fas fa-cogs"></i>
+          <h3>Code Optimization</h3>
+          <p>Optimize your code for better performance, readability, and maintainability.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-chart-line"></i>
+          <h3>Quality Analysis</h3>
+          <p>Get detailed insights into your code quality with categories like security, performance, and more.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-download"></i>
+          <h3>Download Results</h3>
+          <p>Once processed, download your optimized or analyzed code with a single click.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="section-inner">
+      <h2>What Our Users Say</h2>
+      <div class="testimonial">
+          <p>"This tool helped me optimize my code in minutes. It's amazing!"</p>
+          <p style="color: #3e8f41; font-weight: bold;">- Alex P., Developer</p>
+      </div>
+      <div class="testimonial">
+          <p>"The code analysis feature helped me identify security risks in my code. Very useful!"</p>
+          <p style="color: #3e8f41; font-weight: bold;">- Sarah W., Security Engineer</p>
+      </div>
+      <div class="testimonial">
+          <p>"I love how easy it is to use! My code has never been cleaner."</p>
+          <p style="color: #3e8f41; font-weight: bold;">- John D., Software Engineer</p>
+      </div>
+      <div class="testimonial">
+          <p>"A great tool for developers who want to improve code quality without spending too much time!"</p>
+          <p style="color: #3e8f41; font-weight: bold;">- Emily R., Full-Stack Developer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+<footer id="footer" class="footer">
+  <div class="footer-content">
+    <p class="footer-brand">
+      <i class="fas fa-code"></i> CodeZee &copy; 2025 — All rights reserved.
+    </p>
+    
+    <div class="footer-links">
+      <a href="#"><i class="fas fa-user-secret"></i> Privacy Policy</a>
+      <a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a>
+      <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  <!-- JavaScript for Button Click Action -->
+  <script>
+    document.getElementById('start-button').addEventListener('click', function (event) {
+      event.preventDefault();  // Prevent default anchor click
+      document.getElementById('tool-container').style.display = 'flex'; // Show tool section
+      document.getElementById('hero').style.display = 'none'; // Hide hero section
+      document.getElementById('tool-container').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
